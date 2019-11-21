@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+
+package session_manager;
+import "google/protobuf/empty.proto";
+
+// Singup request message
+message SignupInput {
+    string email = 1;
+    string password = 2;
+    string device_name = 3;
+}
+
+// Signup response message
+message SignupOutput {
+    int32 status = 1;
+}
+message SmediaLoginInput{
+    string media = 1;
+    string access_token = 2;
+    string device_name =3;
+}
+
+// Login request message
+message LoginInput {
+    string email = 1;
+    string password = 2;
+    string device_name = 3;
+}
+
+// Login response message
+message LoginOutput {
+    string access_token = 1;
+    bool  bool = 2;
+}
+
+// Logout request message
+message LogoutInput {
+    string device_name = 1;
+}
+
+// Logout response message
+message LogoutOutput {
+    int32 status = 1;
+}
+
+
+
+
+service Session {
+    // Service definitions
+    rpc signup(SignupInput) returns (SignupOutput){}
+    rpc login(LoginInput) returns (LoginOutput) {}
+    rpc logout(LogoutInput) returns (LogoutOutput) {}
+    rpc socialMediaLogin (SmediaLoginInput) returns (LoginOutput){}
+ }   
