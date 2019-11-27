@@ -201,18 +201,7 @@ class SessionServicer(sm_pb2_grpc.SessionServicer):
         cred, _, access_token = self.validate_access(context)
         if not access_token:
             return self.set_grpc_context(context, sm_pb2.UserInfoOutput(), "Invalid access!", grpc.StatusCode.UNAUTHENTICATED)
-        tasks = self.db.query_all(Tasks , email = cred.email )
-        task_run = len(tasks)
-        total_token_spent = task_run * self.token_spent_per_process
-        total_reward = 0.0
-        completed_task = 0
-        for task in tasks:
-            if self.db.query(TaskExecutions, task_id = task.task_id, order = 1):
-                completed_task +=1
-
-        for rewards in tasks:
-            if rewards.reward:
-                total_reward += rewards.reward
+        
 
         
         return sm_pb2.UserInfoOutput(email=cred.email,

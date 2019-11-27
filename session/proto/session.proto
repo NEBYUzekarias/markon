@@ -45,6 +45,19 @@ message LogoutOutput {
 }
 
 
+// UserInfo response message
+
+message UserInfoOutput {
+    string  email = 1;
+    float   balance = 2;
+    float   total_token_spent = 3;
+    float   total_reward = 4;
+    int32   task_run = 5;
+    int32   completed_task = 6;
+    string  picture = 7;
+}
+
+
 
 
 service Session {
@@ -53,4 +66,6 @@ service Session {
     rpc login(LoginInput) returns (LoginOutput) {}
     rpc logout(LogoutInput) returns (LogoutOutput) {}
     rpc socialMediaLogin (SmediaLoginInput) returns (LoginOutput){}
- }   
+    rpc userInfo (google.protobuf.Empty) returns (UserInfoOutput) {}
+ 
+}   
