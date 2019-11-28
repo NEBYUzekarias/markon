@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const Balance =(props) => {
     const {balance , num , balancetype } = props;
     return(                        

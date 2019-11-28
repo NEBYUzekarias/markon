@@ -4,6 +4,7 @@ import {BrowserRouter , Switch , Route} from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
+import AddDevice from './components/dashboard/AddDevice';
 
 
 
@@ -16,6 +17,7 @@ function App() {
         <Navbar/>
         <Switch>
           <Route exact path='/' component={Dashboard}/>
+          <Route path ='/add' component = {AddDevice}/>
           <Route path ='/signup' component ={ SignUp}/>
           <Route path ='/signin' component ={SignIn} />
         </Switch>
